@@ -1,0 +1,68 @@
+---
+title       : Developing Data Products       
+subtitle    : Diamond Price Prediction
+author      : Karthikeyan Ramakrishnan
+job         : DA
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Overveiw 
+
+1. This app shall be used for prediction of diamond
+2. In General diamond price shall be measured by Carat size
+3. As a first step we will build our linear model using dataset DIAMOND
+
+
+--- .class #id 
+
+## Model Preparation
+First load our dataset diamond from UsingR package 
+```{r,message=FALSE,out.height= 9}
+library(UsingR);data(diamond)
+```
+Creating our linear model using lm function
+```{r}
+fit<-lm(price~carat,data=diamond)
+coef(fit)
+```
+From the co efficient we estimate that 3721.0 dollar increase in price for every carat increase in mass of diamond
+
+
+--- .class #id 
+
+## Prediction
+
+New data shall be loaded in variable name called new
+
+```{r}
+
+new = 3.75
+predict(fit,newdata=data.frame(carat=new))
+
+```
+
+We predict that for 3.75 mass of diamond price for the same shall be 13694.22 dollar.
+
+--- 
+
+## Plot
+
+Plotting the fitted regression line & data
+
+```{r}
+plot(diamond$carat,diamond$price,xlab="size of carat",ylab="Price",col="red")
+        lines(diamond$carat,fit$fitted.values,col="blue")
+
+```
+
+
+
+
+
+
+
