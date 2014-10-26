@@ -13,8 +13,7 @@
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
   <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
-
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
@@ -63,7 +62,7 @@
   <article data-timings="">
     <p>First load our dataset diamond from UsingR package </p>
 
-<pre><code class="r">library(UsingR);data(diamond)
+<pre><code class="r">library(UsingR);require(UsingR);data(diamond)
 </code></pre>
 
 <p>Creating our linear model using lm function</p>
@@ -82,14 +81,14 @@ coef(fit)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-3" style="background:;">
   <hgroup>
     <h2>Prediction</h2>
   </hgroup>
   <article data-timings="">
     <p>New data shall be loaded in variable name called new</p>
 
-<pre><code class="r">new = 3.75
+<pre><code class="r">new&lt;-3.75
 predict(fit,newdata=data.frame(carat=new))
 </code></pre>
 
@@ -110,8 +109,8 @@ predict(fit,newdata=data.frame(carat=new))
   <article data-timings="">
     <p>Plotting the fitted regression line &amp; data</p>
 
-<pre><code class="r">plot(diamond$carat,diamond$price,xlab=&quot;size of carat&quot;,ylab=&quot;Price&quot;,col=&quot;red&quot;)
-        lines(diamond$carat,fit$fitted.values,col=&quot;blue&quot;)
+<pre><code class="r">plot(diamond$carat,diamond$price,xlab=&quot;size in carat&quot;,ylab=&quot;price in $&quot;,col=&quot;red&quot;)
+lines(diamond$carat,fit$fitted,col=&quot;blue&quot;)
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
